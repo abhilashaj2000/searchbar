@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{%static 'style.css' %}" />
+        <title>Document</title>
+    </head>
+    <body>
+        <header>
+            <section class="main">
+                <section class="wrapper">
+                    <h2>Dictionary</h2>
+                    <div>
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <div>
+                                <input
+                                    type="text"
+                                    placeholder="search"
+                                    name="search"
+                                />
+                            </div>
+
+                            <button type="submit">
+                                <img
+                                    src="{%static 'images/search-solid.svg' %}"
+                                    alt="image"
+                                />
+                            </button>
+                        </form>
+                    </div>
+                    <ul>
+                        {% if search %}
+                        <li>
+                            <span><h3>{{word}}:</h3></span>{{search}}
+                        </li>
+                        {% else%}
+                        <h1>hey! you forgot to search..</h1>
+                        {% endif %}
+                    </ul>
+                </section>
+            </section>
+        </header>
+    </body>
+</html>
