@@ -8,17 +8,12 @@
 	margin: 0 auto;
 	max-width:1200px;
 }
-header { 
-
-}
-
 header section.main { 
     background:rgb(28, 143, 151) ;
     width: 40%;
     height: 100vh;
     margin: 0 auto;
 }
-
 header section.main h2 { 
     text-align: center;
     font-size: 30px;
@@ -30,18 +25,10 @@ header section.main h2 {
 header section.main div { 
     display: flex;
     align-items: center;
-
 }
 header section.main div form { 
-     margin-left: 18%; 
-    
-   
+     margin-left: 18%;  
 }
-
-header section.main div form div { 
-
-}
-
 header section.main div form div input { 
     height: 30px;
     width:290px;
@@ -51,29 +38,21 @@ header section.main div form div input {
     padding: 15px 30px;
 }
 header section.main div div.continer { 
-    width: 20px;
-  
-   
-    
+    width: 20px;   
 }
-
 header section.main div div.continer img { 
     width: 100%;
     display: block;
-    
 }
-ul{
+ol{
     width: 80%;
     margin: 0 auto;
-    margin-top: 30px;
-   
+    margin-top: 30px;  
 }
-ul li{
+li{
     line-height: 25px;
     font-size: 20px;
     font-weight: 600;
-    list-style: none;
-
 }
 button{
     background: none;
@@ -81,7 +60,7 @@ button{
     width: 30px ;
     height:40px;
     position: absolute;
-    right: 560px;
+    right: 550px;
     top:92px;
 }
 
@@ -93,4 +72,18 @@ h1{
 }
 h3 {
     color: #fff;
+}
+a{
+    display: inline-block;
+
+}
+a button.one{
+    border: 2px solid black;
+    position: absolute;
+    right: 460px;
+    top:95px;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+
 }

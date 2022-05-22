@@ -1,41 +1,66 @@
 from django.shortcuts import render
 
+from web.models import Word, Wordmeanig
 
-def index(request):
-    dic = {'integers':'The whole numbers, plus their counterparts less than zero, and zero',
-            'topic': 'a subject of conversation or discussion:',
-            'website': 'a connected group of pages on the World Wide Web regarded as a single entity, usually maintained by one person or organization and devoted to a single topic or several closely related topics.',
-            'signature': 'the act of signing a document.',
-            'software':'Computers. the programs used to direct the operation of a computer, as well as documentation giving instructions on how to use them',
-            'food':'any nourishing substance that is eaten, drunk, or otherwise taken into the body to sustain life, provide energy, promote growth, etc.'}
-    
+def new(request):
     if request.method == "POST":
-        search=request.POST.get('search')
-        if search == "":
+        word=request.POST.get("word")
+        word_Meanings=request.POST.get("word_Meanings")
+        new_word,create=Word.objects.get_or_create(word=word)
+        print(new_word,create)
+   
+        Wordmeanig.objects.create(
+            word=new_word,
+            Wordmeanig=word_Meanings
+        )
+
+        # context={
+        # "word":word,
+        # "word_Meanings":word_Meanings,
+        # }
+        return render(request,"new.html")
+    return render(request,"new.html")
+    # if request.method == "POST":
+    #     word_Meanings=request.POST.get("word_Meanings")
+    #     context={
+    #     "word_Meanings":word_Meanings
+    #     }
+    # return render(request,"new.html",context=context)
+    
+def index(request):
+    if request.method == "POST":
+        search_word=request.POST.get("search")
+        word = Word.objects.filter(word=search_word)
+
+        print(word)
+        if word:
+            meanings = Wordmeanig.objects.filter(word__in = word).order_by("priority")
             context = {
-                'search':'',
-                'word' : '',    
+                'search':True,
+                'missing':False,
+                'meanings':meanings , 
+                    
             }
             return render(request,"index.html",context)
-        elif search in dic.keys():
-            context = {
-                'search':dic[search],
-                'word' : search,  
+        elif search_word == '':
+            context={
+                'search':''
             }
-
             return render(request,"index.html",context)
         else:
+            meanings=f"{search_word}  not present in my Dictionary"
             context = {
-                'search':'',
-                'word' : '',    
+                'search':True,
+                'missing':True,
+                'meanings':meanings ,     
             }
             return render(request,"index.html",context)
+        
     else:
         context = {
-            'search':"",
-            'word' : "", 
-               
+            'search':True,
+            'meanings':"",         
         }
         return render(request,"index.html",context)
-        
+            
 

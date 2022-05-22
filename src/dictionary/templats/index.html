@@ -14,13 +14,14 @@
                 <section class="wrapper">
                     <h2>Dictionary</h2>
                     <div>
-                        <form method="post" action="">
+                        <form method="post" action="{% url 'web:index' %}">
                             {% csrf_token %}
                             <div>
                                 <input
                                     type="text"
                                     placeholder="search"
                                     name="search"
+
                                 />
                             </div>
 
@@ -32,17 +33,23 @@
                             </button>
                         </form>
                     </div>
-                    <ul>
+                    <ol>
                         {% if search %}
-                        <li>
-                            <span><h3>{{word}}:</h3></span>{{search}}
-                        </li>
+                            {% if missing %}
+                                <h3> {{meanings}}</h3>
+                           
+                            {% else %}
+                                {% for meaning in meanings  %}
+                                    <li><h5> {{meaning}}<h5></li>
+                                {% endfor %}
+                            {% endif %}
                         {% else%}
-                        <h1>hey! you forgot to search..</h1>
+                            <h1>hey! you forgot to search..</h1>
                         {% endif %}
-                    </ul>
+                    </ol>
                 </section>
             </section>
+            <a href="{% url 'web:new' %}"><button class="one">add new</button></a>
         </header>
     </body>
 </html>

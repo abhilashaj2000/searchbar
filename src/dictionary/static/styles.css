@@ -1,0 +1,57 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.wrapper {
+	width: 90%;
+	margin: 0 auto;
+	max-width:1200px;
+}
+header { 
+
+}
+
+header section.main { 
+    background:rgb(28, 143, 151) ;
+    width: 40%;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+section.form{
+    margin-bottom: 20px;
+    width: 100%;
+
+}
+section.form h4{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 30px;
+}
+section.form div{
+    width: 70%;
+    margin:0 auto;
+
+}
+section.form div form.add{
+    width: 100%;
+    margin: 0 auto;
+
+}
+section.form div form.add input{
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    border: 1px solid #000;
+
+}
+section.form div form.add input.button{
+    width: 30%;
+    display:inline-block;
+    margin-left: 120px;
+
+}
